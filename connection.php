@@ -1,8 +1,13 @@
 <?php
+$servername = "localhost";
+$username = "root"; 
+$password = ""; 
+$dbname = "baggage_kiosk_db"; 
 
-$connect = mysqli_connect ('localhost', 'root', '', 'kiosk_baggage_area');
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($connect->connect_error) {
-    die("Connection failed: " . $connect->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
 ?>

@@ -18,7 +18,12 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <style>
+        .card{
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -63,7 +68,8 @@
                     <i class="fas fa-check"></i>
 
                     <span>Edit Card Info</span></a>
-            </li><hr class="sidebar-divider">
+            </li>
+            <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="userdata.php">
                     <i class="fas fa-users"></i>
@@ -103,6 +109,7 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
+
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -125,134 +132,9 @@
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -260,7 +142,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -292,225 +174,205 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid p-5">
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800"></h1>
 
                     <!-- DataTales Example -->
-                    <h1 class="text-dark ">STUDENTS LIST</h1>
-                    <div class="card shadow mb-4">
+
+                    <div class="card  mb-4 p-5">
+                        <h1 class="text-dark">STUDENTS LIST</h1>
                         <div class="card-body">
-                            
+                            <form action="" method="GET">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Enter search query"
+                                        name="query1"
+                                        value="<?php echo isset($_GET['query1']) ? $_GET['query1'] : ''; ?>"
+                                        id="search">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
                             <div class="table-responsive">
                                 <?php
                                 include_once('connection.php');
-                                $sql = "SELECT * FROM students";
-                                $result = $connect->query($sql);
+
+                                $sql = "SELECT * FROM registered_users";
+                                if (isset($_GET['query1'])) {
+                                    $search_query = htmlspecialchars($_GET['query1']);
+                                    $sql .= " WHERE id LIKE '%$search_query%' OR rfid LIKE '%$search_query%' OR tupid LIKE '%$search_query%' OR name LIKE '%$search_query%' OR gender LIKE '%$search_query%' OR course LIKE '%$search_query%' OR college LIKE '%$search_query%'";
+                                }
+
+                                $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
-                                    echo '<table class="table table-bordered table-hover" id="myTable">
-                            <thead>
-                                <tr class="bg-gradient-primary text-light text-center">
-                                    <th>Card ID</th>
-                                    <th>TUP ID</th>
-                                    <th>Name</th>
-                                    <th>Gender</th>
-                                    <th>Course</th>
-                                    <th>College</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>';
+                                    echo '<table class="table table-striped table-hover" id="myTable">
+                        <thead>
+                            <tr class="bg-gradient-primary text-light text-center">
+                                <th> ID</th>
+                                <th>Card ID</th>
+                                <th>TUP ID</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Course</th>
+                                <th>College</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
 
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>
-                        <td>{$row['card_id']}</td>
-                        <td>{$row['tup_id']}</td>
-                        <td>{$row['student_name']}</td>
-                        <td>{$row['student_gender']}</td>
-                        <td>{$row['student_course']}</td>
-                        <td>{$row['student_college']}</td>
-                        <td>{$row['student_email']}</td>
-                        <td>{$row['student_mobile']}</td>
-                        <td>{$row['student_status']}</td>
-                        <td>
-                            <a href='edit.php?id={$row['card_id']}' class='btn btn-warning btn-sm'><i class='fas fa-edit'></i></a>
-                            <a href='delete.php?id={$row['card_id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this record?\");'><i class='fas fa-trash-alt'></i></a>
-                        </td>
-                    </tr>";
+                            <td>{$row['id']}</td>
+                            <td>{$row['rfid']}</td>
+                            <td>{$row['tupid']}</td>
+                            <td>{$row['name']}</td>
+                            <td>{$row['gender']}</td>
+                            <td>{$row['course']}</td>
+                            <td>{$row['college']}</td>
+                            <td class='d-flex'>
+                                <a href='edit.php?id={$row['rfid']}' class='btn btn-warning text-dark btn-sm m-2'><i class='fas fa-edit'></i></a>
+                                <a href='delete.php?id={$row['rfid']}' class='btn btn-danger btn-sm m-2' onclick='return confirm(\"Are you sure you want to delete this record?\");'><i class='fas fa-trash-alt'></i></a>
+                            </td>
+                        </tr>";
                                     }
 
                                     echo '</tbody></table>';
+                                    $num_rows = $result->num_rows;
+                                    echo "<p class='text-primary'><b>Total: $num_rows</b></p>";
                                 } else {
-                                    echo "0 results";
+                                    echo "<p>No results found</p>";
                                 }
-
-
                                 ?>
-                                </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
-                            <h1 class="text-dark ">STUDENTS LOGIN</h1>
-                    <div class="card shadow mb-4">
+
+
+
+                    <div class="card  p-5 mb-4">
+                        <h1 class="text-dark">STUDENTS LOGS</h1>
                         <div class="card-body">
+                            <form action="" method="GET">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Enter search term"
+                                        id="searchInput" name="query"
+                                        value="<?php echo isset($_GET['query']) ? $_GET['query'] : ''; ?>">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
                             <?php
                             include_once('connection.php');
-                            $sql = "SELECT * FROM student_logs WHERE logs_status = 'in'";
-                            $result = $connect->query($sql);
+
+                            $sql = "SELECT * FROM students_logs";
+
+                            if (isset($_GET['query'])) {
+                                $search_query = htmlspecialchars($_GET['query']);
+                                $sql .= " WHERE id LIKE '$search_query' OR rfid LIKE '$search_query' OR tupid LIKE '$search_query' OR name LIKE '%$search_query%' OR gender LIKE '$search_query' OR course LIKE '$search_query' OR college LIKE '$search_query' OR created_at LIKE '$search_query' OR status LIKE '$search_query'";
+                            }
+
+                            $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
-                                echo '<table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr class="bg-success text-light text-center">
-                    <th>Log ID</th>
-                    <th>Card ID</th>
-                    <th>TUP ID</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Course</th>
-                    <th>College</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>';
+                                echo '<table class="table table-striped table-hover">
+                <thead>
+                    <tr class="bg-success text-light text-center">
+                        <th>ID</th>
+                        <th>Card ID</th>
+                        <th>TUP ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>';
 
                                 while ($row = $result->fetch_assoc()) {
                                     echo "<tr>
-        <td>{$row['log_id']}</td>
-        <td>{$row['card_id']}</td>
-        <td>{$row['tup_id']}</td>
-        <td>{$row['student_name']}</td>
-        <td>{$row['student_gender']}</td>
-        <td>{$row['student_course']}</td>
-        <td>{$row['student_college']}</td>
-        <td>{$row['log_datetime']}</td>
-        <td>{$row['logs_status']}</td>
-    </tr>";
+                        <td>{$row['id']}</td>
+                        <td>{$row['rfid']}</td>
+                        <td>{$row['tupid']}</td>
+                        <td>{$row['name']}</td>
+                        <td>{$row['created_at']}</td>
+                        <td>{$row['status']}</td>
+                    </tr>";
                                 }
 
                                 echo '</tbody></table>';
+                                $num_rows = $result->num_rows;
+                                echo "<p class='text-success'><b>Total: $num_rows</b></p>";
                             } else {
-                                echo "0 results";
-                            }
-
-
-                            ?>
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
-                            <h1 class="text-dark ">STUDENTS LOGOUT</h1>
-
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <?php
-                            include_once('connection.php');
-                            $sql = "SELECT * FROM student_logs WHERE logs_status = 'out'";
-                            $result = $connect->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                echo '<table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr class="bg-danger text-light text-center">
-                    <th>Log ID</th>
-                    <th>Card ID</th>
-                    <th>TUP ID</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Course</th>
-                    <th>College</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>';
-
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<tr>
-        <td>{$row['log_id']}</td>
-        <td>{$row['card_id']}</td>
-        <td>{$row['tup_id']}</td>
-        <td>{$row['student_name']}</td>
-        <td>{$row['student_gender']}</td>
-        <td>{$row['student_course']}</td>
-        <td>{$row['student_college']}</td>
-        <td>{$row['log_datetime']}</td>
-        <td>{$row['logs_status']}</td>
-    </tr>";
-                                }
-
-                                echo '</tbody></table>';
-                            } else {
-                                echo "0 results";
+                                echo "<p>No results found</p>";
                             }
                             ?>
-                            </tbody>
-                            </table>
                         </div>
                     </div>
+
+                    <!-- /.container-fluid -->
+
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <script>
+            // Clear input box on page reload
+            window.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('searchInput').value = '';
+                document.getElementById('search').value = '';
+            });
+        </script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 

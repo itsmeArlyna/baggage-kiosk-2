@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -62,7 +63,8 @@
                     <i class="fas fa-check"></i>
 
                     <span>Edit Card Info</span></a>
-            </li><hr class="sidebar-divider">
+            </li>
+            <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="userdata.php">
                     <i class="fas fa-users"></i>
@@ -206,8 +208,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -218,8 +219,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -230,8 +230,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -263,8 +262,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -295,56 +293,73 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                <h1 class="h3 mb-2 text-gray-800">Read Card Data (Testing)</h1>
-                    <div class="card shadow mb-4 text-center">
-                        <div class="card-header bg-primary">
-                            
+                <div class="container-fluid ">
+                    <div class="card shadow m-4 p-5">
+                    <h2 class="text-center">RFID Data</h2>
+                        <p class="text-center">Place your ID on the card reader </p>
+                        <p class="text-center" style="opacity:0.5; color:red;">*Just tap again your ID if you think that it's already registered</p>
+                        
+                        <div style="opacity:0;">
+                            <input type="text" id="rfidInput" placeholder="Enter RFID" autocomplete="off">
+                            <button id="submitButton" onclick="getData()">Get Data</button>
                         </div>
-                        <div class="card-body">
-                            <ol style="list-style: none;">
-                                <li id="user_card_id"></li>
-                                <li id="user_tup_id"></li>
-                                <li id="user_name"></li>
-                                <li id="user_gender"></li>
-                                <li id="user_course"></li>
-                                <li id="user_college"></li>
-                                <li id="user_email"></li>
-                                <li id="user_mobile"></li>
-                            </ol>
-                        </div>
-                        </div>
+                        <div id="result"></div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
                 <script>
-                     var user_card_id = document.getElementById('user_card_id');
-        var user_tup_id = document.getElementById('user_tup_id');
-        var user_name = document.getElementById('user_name');
-        var user_gender = document.getElementById('user_gender');
-        var user_course = document.getElementById('user_course');
-        var user_college = document.getElementById('user_college');
-        var user_email = document.getElementById('user_email');
-        var user_mobile = document.getElementById('user_mobile');
+              function focusInput() {
+            document.getElementById("rfidInput").focus();
+        }
+        focusInput();
 
-        const user_data = {
-            card_id: 12345678,
-            student_id: "TUPM-20-0130",
-            student_name: "Arlyn Seno",
-            student_gender: "Female",
-            student_college: "CIT",
-            student_course: "BET-Cpet",
-            student_email: "arlyn.seno@tup.edu.ph",
-            student_mobile: 9394188314,
-        };
+        $(document).ready(function() {
+            // Get references to the input and button
+            const rfidInput = document.getElementById('rfidInput');
+            const submitButton = document.getElementById('submitButton');
 
-        user_card_id.innerHTML = "CARD ID : " + user_data.card_id;
-        user_tup_id.innerHTML = "TUP ID : " + user_data.student_id;
-        user_name.innerHTML = "NAME : " + user_data.student_name;
-        user_gender.innerHTML = "GENDER : " + user_data.student_gender;
-        user_course.innerHTML = "COURSE : " + user_data.student_course;
-        user_college.innerHTML = "COLLEGE : " + user_data.student_college;
-        user_email.innerHTML = "EMAIL : " + user_data.student_email;
-        user_mobile.innerHTML = "MOBILE : " + user_data.student_mobile;
+            // Function to trigger click event on the button
+            function triggerButtonClick() {
+                submitButton.click();
+            }
+
+            // Add event listener to input field
+            rfidInput.addEventListener('input', function() {
+                if (this.value.trim() !== '') {
+                    triggerButtonClick();
+                }
+            });
+        });
+
+        function getData() {
+            var rfid = document.getElementById("rfidInput").value;
+            // Check if RFID is not empty
+            if (rfid.trim() !== '') {
+                $.ajax({
+                    url: 'http://localhost/dashboard_kiosk/save_registration.php',
+                    type: 'POST',
+                    data: {rfid: rfid},
+                    dataType: 'json',
+                    success: function(response) {
+                        if(response.length > 0) {
+                            var data = response[0];
+                            $('#result').html(
+                                '<p>Card ID: ' + data.rfid + '</p><p>TUP ID: ' + data.tupid + '</p> <p>Name: ' + data.name + '</p><p> Gender: ' + data.gender + '</p> <p>Course: ' + data.course + '</p> <p>College: ' + data.college + '</p><p>Registration date: ' + data.registration_date+ '</p>'
+                            );
+                            // Clear the input field
+                            $('#rfidInput').val('');
+                        } else {
+                            $('#result').html('<p>No data found for this RFID.</p>');
+                            // Clear the input field
+                            $('#rfidInput').val('');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        }
                 </script>
             </div>
             <!-- End of Main Content -->

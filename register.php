@@ -98,8 +98,8 @@
 
     .warning-text {
         margin-left: 10px;
-        font-size: 24px;
-        color: #333;
+        font-size: 18px;
+        color: red;
         font-weight: 600;
     }
     </style>
@@ -111,25 +111,26 @@
         <a href="user_main_interface.php"><i class="fas fa-arrow-left"></i>
             Back</a>
     </nav>
-    <div class="container-fluid">
+    <div class="container pt-2">
         <div class="row pt-5">
             <div class="col-12 ">
-                <div class="card" id="custom-card">
+                <div class="card pt-5" id="custom-card">
+                <h1 class="text-info text-center"><b>Registration</b></h1>
                     <div class="card-body">
                         <div class="warning-container">
                             <div class="warning-icon">!</div>
                             <div class="warning-text">PLACE YOUR SCHOOL ID ON THE READER . . .</div>
                         </div>
-                        <form method="post" action="insert.php">
+                        <form action="save_registration.php" method="post">
                             <div class="form-row" id="student_logs">
                                 <div class="form-group col-md-6">
                                     <label for="input_card_id">Card ID</label>
-                                    <input type="text" class="form-control" id="input_card_id" name="input_card_id"
-                                        placeholder="">
+                                    <input type="text" class="form-control" id="input_card_id" name="rfid"
+                                        placeholder="Place your id on the card reader" >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="input_tup_id">TUP ID</label>
-                                    <input type="text" class="form-control" id="input_tup_id" name="input_tup_id"
+                                    <input type="text" class="form-control" id="input_tup_id" name="tupid"
                                         placeholder="Enter your Student ID" pattern="TUPM-\d{2}-\d{4}" required>
                                 </div>
                             </div>
@@ -137,11 +138,11 @@
                                 <div class="form-group col-md-6">
                                     <label for="input_student_name">Name</label>
                                     <input type="text" class="form-control" id="input_student_name"
-                                        name="input_student_name" placeholder="Enter Full name">
+                                        name="name" placeholder="Enter Full name">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="input_student_gender">Gender</label>
-                                    <select id="input_student_gender" name="input_student_gender" class="form-control">
+                                    <select id="input_student_gender" name="gender" class="form-control">
                                         <option selected disabled value="">Choose Gender</option>
                                         <option>Male</option>
                                         <option>Female</option>
@@ -152,7 +153,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="input_student_college">College</label>
-                                    <select id="input_student_college" name="input_student_college" class="form-control"
+                                    <select id="input_student_college" name="college" class="form-control"
                                         onchange="populateCourses()">
                                         <option selected disabled value="">Choose College</option>
                                         <option value="College of Industrial Technology">College of Industrial
@@ -168,32 +169,15 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="input_student_course">Course</label>
-                                    <select id="input_student_course" name="input_student_course" class="form-control">
+                                    <select id="input_student_course" name="course" class="form-control">
                                         <option selected disabled value="">Choose Course</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="input_student_mobile">Mobile Number</label>
-                                    <input type="text" class="form-control" id="input_student_mobile"
-                                        name="input_student_mobile" placeholder="Enter Mobile no">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="input_student_email">Image 1</label>
-                                    <input type="email" class="form-control" id="input_student_email"
-                                        name="input_student_email" placeholder="This is optional, for face recognition">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="input_student_email">Image 2</label>
-                                    <input type="email" class="form-control" id="input_student_email"
-                                        name="input_student_email" placeholder="Enter email">
-                                </div>
-                            </div>
                             <div class="justify-content-center d-flex text-center">
-                                <button class="btn btn-primary pt-2 mt-1" id="registerButton" type="submit"
-                                    name="submit">
-                                    <h4>Register!</h4>
+                                <button class="btn btn-primary mt-2" id="registerButton" type="submit"
+                                    name="register">
+                                    <b>R E G I S T E R !</b>
                                 </button>
                             </div>
                         </form>
@@ -215,6 +199,10 @@
     </script>
 
     <script>
+         function focusInput() {
+            document.getElementById("input_card_id").focus();
+        }
+        focusInput();
     ///////////////////////////////////////////COLLEGE AND COURSE /////////////////////
     function populateCourses() {
         var collegeDropdown = document.getElementById("input_student_college");
@@ -383,6 +371,15 @@
         courseDropdown.innerHTML += '<option value="' + courseName + '">' + courseName + '</option>';
     }
 
+    document.getElementById('input_card_id').addEventListener('input', function(event) {
+    let inputValue = event.target.value;
+    
+    let sanitizedValue = inputValue.replace(/\D/g, '');
+    
+    sanitizedValue = sanitizedValue.slice(0, 10);
+    
+    event.target.value = sanitizedValue;
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
         var inputCode = document.getElementById('input_tup_id');
@@ -399,7 +396,7 @@
     });
 
 
-    const idleTime = 10000;
+    const idleTime = 15000;
 
     let idleTimer;
 
