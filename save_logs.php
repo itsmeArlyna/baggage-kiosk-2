@@ -7,6 +7,11 @@ $baudRate = 9600;
 if (isset($_POST['save'])) {
     $rfid = $_POST['rfid'];
 
+    if(isRecentlyUsed($conn, $rfid, 10)) { 
+        header("Location: user_main_interface.php");
+        exit();
+    }
+
     $check_stmt = $conn->prepare("SELECT * FROM registered_users WHERE rfid = ?");
     if ($check_stmt === false) {
         die("Error preparing statement: " . $conn->error);
@@ -29,7 +34,6 @@ if (isset($_POST['save'])) {
                 die("Error preparing insert statement: " . $conn->error);
             }
     
-            // Bind parameters
             $insert_stmt->bind_param("sssssss", $rfid, $status, $row['tupid'], $row['name'], $row['gender'], $row['course'], $row['college']);
             if ($insert_stmt->execute() === TRUE) {
                 $command = ($status == 'in') ? '1' : '0';
@@ -86,8 +90,6 @@ function get_next_status($conn, $rfid) {
     $last_status = $last_log['status'];
 
     return ($last_status == 'in') ? 'out' : 'in';
-    
-
 }
 
 function sendSerialCommand($command) {
@@ -101,4 +103,19 @@ function sendSerialCommand($command) {
     }
 }
 
+function isRecentlyUsed($conn, $rfid, $threshold_seconds) {
+    $check_stmt = $conn->prepare("SELECT * FROM students_logs WHERE rfid = ? AND timestamp > DATE_SUB(NOW(), INTERVAL ? SECOND)");
+    if ($check_stmt === false) {
+        die("Error preparing statement: " . $conn->error);
+    }
+
+    $check_stmt->bind_param("si", $rfid, $threshold_seconds);
+    if ($check_stmt->execute() === false) {
+        die("Error executing statement: " . $check_stmt->error);
+    }
+
+    $result = $check_stmt->get_result();
+
+    return ($result->num_rows > 0);
+}
 ?>

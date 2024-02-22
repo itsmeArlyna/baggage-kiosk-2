@@ -120,6 +120,12 @@
                 document.getElementById("submitButton").click();
             }
         });
+
+        document.getElementById("myInput").addEventListener("input", function () {
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
         $.ajax({
             url: 'http://localhost/dashboard_kiosk/save_logs.php',
             type: 'GET',
