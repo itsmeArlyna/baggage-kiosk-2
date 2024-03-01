@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,50 +21,48 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <style>
-       button{
-        float: right;
-       }
-       .card{
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-       }
-      a{
-        color: white;
-        font-weight: bolder;
-      }
-      body{
+        button {
+            float: right;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        a {
+            color: white;
+            font-weight: bolder;
+        }
+
+        body {
             background-color: rgba(67, 67, 67, 0.153);
         }
-        nav a{
-    color: #fff;
-    font-size: 3vh;
-    font-weight: bold;
-}
+
+        nav a {
+            color: #fff;
+            font-size: 3vh;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
-<nav class="navbar navbar-danger bg-danger text-light mb-5">
+    <nav class="navbar navbar-danger bg-danger text-light mb-5">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-text mx-3 ">LIBRARY - BAGGAGE AREA KIOSK</div>
         </a>
-</nav>
+    </nav>
     <div class="container pt-5 mt-5 d-flex justify-content-center">
         <div class="card w-50 p-3">
             <div class="card-body">
                 <h2 class="mb-3">Library Staff Log in</h2>
-                <form>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">Username :</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter username">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">Password :</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Password">
-                    </div>
-                    <div class="button-group pt-3">
-                        <button class="btn btn-primary"><a href="index.php">Log in</a></button>
-                    </div>
-                  </form>
+                <form action="login.php" method="post">
+                    <label for="username">Username:</label>
+                    <input class="form-control" type="text" id="username" name="username" required><br>
+                    <label for="password">Password:</label>
+                    <input class="form-control" type="password" id="password" name="password" required><br>
+                    <button class="btn btn-primary" type="submit" name="login">Login</button>
+                </form>
             </div>
         </div>
     </div>

@@ -4,9 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
-    
-    <!-- Include SweetAlert from CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
@@ -30,11 +27,9 @@ if (isset($_POST['submit'])) {
     $student_mobile = $_POST['input_student_mobile'];
 
     if ($stmt->execute()) {
-        // Close the prepared statement before redirecting
         $stmt->close();
         $connect->close();
 
-        // Use SweetAlert for a more visually appealing alert
         echo '<script>
             Swal.fire({
                 title: "Submission successful!",
@@ -44,7 +39,6 @@ if (isset($_POST['submit'])) {
             });
         </script>';
         
-        // Redirect to user_main_interface.php after a short delay
         echo '<script>
             setTimeout(function() {
                 window.location.href = "user_main_interface.php";
@@ -55,7 +49,6 @@ if (isset($_POST['submit'])) {
         echo "Error: " . $stmt->error;
     }
 
-    // Close the prepared statement
     $stmt->close();
     $connect->close();
 }

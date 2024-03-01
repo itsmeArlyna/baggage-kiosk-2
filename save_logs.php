@@ -96,7 +96,7 @@ function sendSerialCommand($command) {
     global $serialPort, $baudRate;
     $fp = fopen($serialPort, 'w');
     if (!$fp) {
-        die('Error: Unable to open serial port. Check permissions and port availability.');
+        echo 'Error: Unable to open serial port. Check permissions and port availability.';
     } else {
         fwrite($fp, $command);
         fclose($fp);
