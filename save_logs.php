@@ -118,4 +118,6 @@ function isRecentlyUsed($conn, $rfid, $threshold_seconds) {
 
     return ($result->num_rows > 0);
 }
+
+
 ?>
