@@ -88,7 +88,6 @@
                         <img src="" alt="" id="genderImage"> <!--put the image here-->
                         <div class="d-flex justify-content-center" id="tableBody"></div>
                     </div>
-
                 </div>
             </div>
             <div class="col-3 text-center mt-5">
@@ -96,6 +95,13 @@
                 <a href="register.php"><button class="btn btn-success" id="registerButton">
                         <h5>Register</h5>
                     </button></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <a href="a_face/index.php">
+                    <button class="btn btn-primary">Face recognition</button>
+                </a>
             </div>
         </div>
     </div>
@@ -127,7 +133,7 @@
             }
         });
         $.ajax({
-            url: 'http://localhost/dashboard_kiosk/save_logs.php',
+            url: 'http://localhost/baggage-kiosk-2/save_logs.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {

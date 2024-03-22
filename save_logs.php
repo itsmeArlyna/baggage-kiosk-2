@@ -1,7 +1,7 @@
 <?php
 include_once('connection.php');
 
-$serialPort = 'COM3'; 
+$serialPort = 'COM4'; 
 $baudRate = 9600; 
 
 if (isset($_POST['save'])) {
