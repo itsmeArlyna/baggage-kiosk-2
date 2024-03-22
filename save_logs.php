@@ -29,12 +29,12 @@ if (isset($_POST['save'])) {
         $status = get_next_status($conn, $rfid);
     
         if ($row) {
-            $insert_stmt = $conn->prepare("INSERT INTO students_logs (rfid, status, tupid, name, gender, course, college) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $insert_stmt = $conn->prepare("INSERT INTO students_logs (rfid, status, tupid, name, gender, course, college, number) VALUES (?, ?, ?, ?, ?, ?, ?,?)");
             if ($insert_stmt === false) {
                 die("Error preparing insert statement: " . $conn->error);
             }
     
-            $insert_stmt->bind_param("sssssss", $rfid, $status, $row['tupid'], $row['name'], $row['gender'], $row['course'], $row['college']);
+            $insert_stmt->bind_param("ssssssss", $rfid, $status, $row['tupid'], $row['name'], $row['gender'], $row['course'], $row['college'], $row['number']);
             if ($insert_stmt->execute() === TRUE) {
                 $command = ($status == 'in') ? '1' : '0';
                 sendSerialCommand($command);

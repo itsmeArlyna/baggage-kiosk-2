@@ -8,9 +8,10 @@ if (isset($_POST['register'])) {
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
     $course = mysqli_real_escape_string($conn, $_POST['course']);
     $college = mysqli_real_escape_string($conn, $_POST['college']);
+    $number = mysqli_real_escape_string($conn, $_POST['number']);
 
-    $stmt = $conn->prepare("INSERT INTO registered_users (rfid, tupid, name, gender, course, college) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $rfid, $tupid, $name, $gender, $course, $college);
+    $stmt = $conn->prepare("INSERT INTO registered_users (rfid, tupid, name, gender, course, college, number) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssss", $rfid, $tupid, $name, $gender, $course, $college, $number);
 
     if ($stmt->execute() === TRUE) {
         header("Location: registration_success.php");

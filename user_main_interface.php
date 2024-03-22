@@ -139,7 +139,7 @@
             success: function (data) {
                 console.log(data);
                 var html_append = "";
-                var genderImage = ''; // Initialize gender image variable
+                var genderImage = ''; 
                 $.each(data, function (index, item) {
                     var color = '';
                     if (item.status.toLowerCase() === 'out') {

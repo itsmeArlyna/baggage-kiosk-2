@@ -140,7 +140,7 @@
                                     <input type="text" class="form-control" id="input_student_name"
                                         name="name" placeholder="Enter Full name">
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label for="input_student_gender">Gender</label>
                                     <select id="input_student_gender" name="gender" class="form-control">
                                         <option selected disabled value="">Choose Gender</option>
@@ -149,6 +149,11 @@
                                         <option>Others</option>
                                     </select>
                                 </div>
+                                <div class="form-group col-md-3">
+    <label for="input_student_number">Number</label>
+    <input type="text" class="form-control" id="input_student_number" name="number" value="+639" placeholder="Enter number">
+</div>
+
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -173,6 +178,7 @@
                                         <option selected disabled value="">Choose Course</option>
                                     </select>
                                 </div>
+                                
                             </div>
                             <div class="justify-content-center d-flex text-center">
                                 <button class="btn btn-primary mt-2" id="registerButton" type="submit"
