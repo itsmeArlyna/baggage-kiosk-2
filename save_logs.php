@@ -38,6 +38,9 @@ if (isset($_POST['save'])) {
             if ($insert_stmt->execute() === TRUE) {
                 $command = ($status == 'in') ? '1' : '0';
                 sendSerialCommand($command);
+                
+                include_once('sendSMS.php');
+
                 header("Location: user_main_interface.php");
                 exit();
             } else {
@@ -118,6 +121,4 @@ function isRecentlyUsed($conn, $rfid, $threshold_seconds) {
 
     return ($result->num_rows > 0);
 }
-
-
 ?>

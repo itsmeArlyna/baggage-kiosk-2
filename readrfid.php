@@ -122,7 +122,7 @@ include_once 'navbar.php';
             // Check if RFID is not empty
             if (rfid.trim() !== '') {
                 $.ajax({
-                    url: 'http://localhost/dashboard_kiosk/save_registration.php',
+                    url: 'http://localhost/baggage-kiosk-2/save_registration.php',
                     type: 'POST',
                     data: {rfid: rfid},
                     dataType: 'json',
