@@ -48,7 +48,7 @@
 
 <body>
     <nav class="navbar navbar-danger bg-danger text-light mb-5">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home.html">
             <div class="sidebar-brand-text mx-3 ">LIBRARY - BAGGAGE AREA KIOSK</div>
         </a>
     </nav>

@@ -88,7 +88,10 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                     <!-- DataTales Example -->
 
                     <div class="card  mb-4 p-5">
-                        <h1 class="text-dark">STUDENTS LIST</h1>
+                        <h1 class="text-dark">REGISTERED STUDENTS LIST</h1>
+                       
+                                <a href="registered_users.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Registered Users Report</a>
                         <div class="card-body">
                             <form action="" method="GET">
                                 <div class="input-group mb-3">
@@ -158,6 +161,34 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
 
                     <div class="card  p-5 mb-4">
                         <h1 class="text-dark">STUDENTS LOGS</h1>
+                        <form id="reportForm" action="student_logs_list.php" method="get" style="display: inline;">
+    <div class="input-group">
+        <input type="date" class="form-control" name="start_date" id="startDate" required>
+        <input type="date" class="form-control" name="end_date" id="endDate" required>
+        <button type="submit" class="btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+        </button>
+    </div>
+</form>
+
+<script>
+    document.getElementById('reportForm').addEventListener('submit', function() {
+        var startDate = document.getElementById('startDate').value;
+        var endDate = document.getElementById('endDate').value;
+
+        // Validate date range (optional)
+        if (startDate > endDate) {
+            alert('End date must be after start date');
+            return false; // Prevent form submission
+        }
+
+        // Construct URL with date parameters
+        var url = 'student_logs_list.php?start_date=' + startDate + '&end_date=' + endDate;
+        this.action = url; // Set form action to include date parameters
+        return true; // Allow form submission
+    });
+</script>
+
                         <div class="card-body">
                             <form action="" method="GET">
                                 <div class="input-group mb-3">
@@ -214,7 +245,56 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
                             ?>
                         </div>
                     </div>
+                    <div class="card  p-5 mb-4">
+                        <h1 class="text-dark">STUDENTS LOGS WITH BAG TAGS</h1>
+                        <div class="card-body">
+                            
+                            <?php
+                            include_once('connection.php');
 
+                            $sql = "SELECT * FROM user_bag_log";
+                            $stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    ?>
+    <table class="table table-striped table-hover ">
+        <thead class="bg-warning text-dark">
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Bag Tag ID</th>
+                <th>Tag Number</th>
+                <th>Log Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            while ($row = $result->fetch_assoc()) {
+            ?>
+                <tr>
+                    <td><?= $row['name'] ?></td>
+                    <td><?=$row['number']?></td>
+                    <td><?= $row['bag_tag_number'] ?></td>
+                    <td><?= $row['id_number'] ?></td>
+                    <td><?= $row['log_timestamp'] ?></td>
+                    <td><?= $row['status'] ?></td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+    <?php
+    mysqli_free_result($result);
+} else {
+    echo '<p>No records found</p>';
+}
+?>
+                        </div>
+                    </div>
                     <!-- /.container-fluid -->
 
                 </div>

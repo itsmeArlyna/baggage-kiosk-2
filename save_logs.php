@@ -1,7 +1,7 @@
 <?php
 include_once('connection.php');
 
-$serialPort = 'COM4'; 
+$serialPort = 'COM5'; 
 $baudRate = 9600; 
 
 if (isset($_POST['save'])) {
@@ -39,9 +39,12 @@ if (isset($_POST['save'])) {
                 $command = ($status == 'in') ? '1' : '0';
                 sendSerialCommand($command);
                 
-                include_once('sendSMS.php');
+            
 
                 header("Location: user_main_interface.php");
+                sleep(30);
+                include_once('sendSMS.php');
+                include_once('bag_logs.php');
                 exit();
             } else {
                 echo "Error: " . $insert_stmt->error;

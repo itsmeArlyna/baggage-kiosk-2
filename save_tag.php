@@ -2,22 +2,15 @@
 
 date_default_timezone_set('Asia/Shanghai');
 
-include 'conn.php';
-
-// Function to check if the request is made via AJAX
-function is_ajax_request() {
-    return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
-}
+include 'connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["bag_tag_id"])) {
-    // Sanitize input to prevent SQL Injection
     $bagTagId = mysqli_real_escape_string($conn, $_POST["bag_tag_id"]);
 
     // Attempt to start a transaction
     $conn->begin_transaction();
 
     try {
-        // Check if bag_tag_id exists and retrieve id_number from bag_tag_number table
         $sql_check = "SELECT id_number FROM bag_tag_number WHERE bag_tag_id = ?";
         $stmt_check = $conn->prepare($sql_check);
         if ($stmt_check === false) {
@@ -64,34 +57,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["bag_tag_id"])) {
         // Commit transaction
         $conn->commit();
 
-        // Check if the request is AJAX
-        if (is_ajax_request()) {
-            // For AJAX request, return JSON response
-            echo json_encode([
-                'success' => true,
-                'message' => 'Bag tag status updated successfully.',
-                'newStatus' => $newStatus
-            ]);
-        } else {
-            // For non-AJAX request, redirect
-            header('Location: try.php');
-        }
+        // Redirect after successful update
+        header('Location: try.php');
+        exit();
 
     } catch (Exception $e) {
         // An error occurred, rollback the transaction
         $conn->rollback();
 
-        // Check if the request is AJAX
-        if (is_ajax_request()) {
-            // For AJAX request, return JSON error response
-            echo json_encode([
-                'success' => false,
-                'message' => "Error: " . $e->getMessage()
-            ]);
-        } else {
-            // For non-AJAX request, you might want to redirect or display an error page
-            echo "Error: " . $e->getMessage(); // Modify as needed
-        }
+        // Handle error
+        echo "Error: " . $e->getMessage(); // Modify as needed
     }
 
     // Close statements if opened
@@ -106,16 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["bag_tag_id"])) {
     }
 } else {
     // No data submitted
-    if (is_ajax_request()) {
-        // For AJAX request, return JSON error response
-        echo json_encode([
-            'success' => false,
-            'message' => 'No data submitted'
-        ]);
-    } else {
-        // For non-AJAX request, you might want to handle differently
-        echo "No data submitted"; // Modify as needed
-    }
+    echo "No data submitted"; // Modify as needed
 }
 
 // Close database connection

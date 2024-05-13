@@ -78,7 +78,7 @@
                     <form action="save_tag.php" method="post">
                         <div>
                             <label for="rfid"></label>
-                            <input id="myInput" type="text" name="bag_tag_id" style="opacity:0;" autocomplete="off">
+                            <input id="myInput" type="text" name="bag_tag_id" style="opacity:1;" autocomplete="off">
                         </div>
                         <div>
                             <button id="submitButton" type="submit" name="save" style="opacity:0;">save</button>
@@ -87,23 +87,21 @@
                     <div class="card-body">
                         <?php
 
-include_once('conn.php');
-$sql = "SELECT * FROM registered_tags ORDER BY timestamp DESC LIMIT 1";
+                        include_once ('connection.php');
+                        $sql = "SELECT * FROM registered_tags ORDER BY timestamp DESC LIMIT 1";
 
-// Execute the query
-$result = $conn->query($sql);
+                        $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // Fetch the row
-    $latestRow = $result->fetch_assoc();
-    echo "<h1 class='text-primary'><b>BAG TAG: " . $latestRow['id_number'] . "</b></h1><br>";
-    echo "Status: " . $latestRow['status'] . "<br>";
-    echo "" . $latestRow['timestamp'] . "<br>";
-} else {
-    echo "No rows found.";
-}
+                        if ($result->num_rows > 0) {
+                            $latestRow = $result->fetch_assoc();
+                            echo "<h1 class='text-primary'><b>BAG TAG: " . $latestRow['id_number'] . "</b></h1><br>";
+                            echo "Status: " . $latestRow['status'] . "<br>";
+                            echo "" . $latestRow['timestamp'] . "<br>";
+                        } else {
+                            echo "No rows found.";
+                        }
 
-?>
+                        ?>
 
                     </div>
 
@@ -127,19 +125,19 @@ if ($result->num_rows > 0) {
         }
         focusInput();
 
-        document.getElementById("myInput").addEventListener("input", function () {
-            if (this.value.trim() !== "") {
-                document.getElementById("submitButton").click();
-            }
-        });
+        // document.getElementById("myInput").addEventListener("input", function () {
+        //     if (this.value.trim() !== "") {
+        //         document.getElementById("submitButton").click();
+        //     }
+        // });
 
         // document.getElementById("myInput").addEventListener("input", function () {
         //     if (this.value.length > 10) {
         //         this.value = this.value.slice(0, 10);
         //     }
         // });
-        
-      
+
+
     </script>
 </body>
 

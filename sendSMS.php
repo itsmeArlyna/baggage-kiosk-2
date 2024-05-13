@@ -18,19 +18,22 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM students_logs ORDER BY id DESC LIMIT 1";
+$sql = "SELECT * FROM user_bag_log ORDER BY id DESC LIMIT 1";
 $result = $conn->query($sql);
 if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $name = $row['name'];
     $phoneNumber = $row['number']; 
     $status = $row['status'];
+    $time = $row['tag_timestamp'];
+    $bag_id = $row['id_number'];
 
     
  if ($status === 'in') {
-    $message = "Hey $name, welcome to the library. Enjoy your time!";
+    $message = "Hey $name, welcome to the library. \n Your bag tag number is: $bag_id \n Time in: $time" ;
 } elseif ($status === 'out') {
-    $message = "Hey $name, exiting the library baggage area? Remember to grab your belongings. Happy reading!";
+    $message = "Hey $name, exiting the library baggage area? Remember to grab your belongings. Happy reading!\n Time out: $time";
+    //if out, i want you to get the $phoneNumber of the $name of the person with the latest 'out' status and send the message to the $phoneNumber of the latest $name with that$bag_id and say that, your bag numbered: is taken out of the library baggage area
 } else {
     die("Invalid status");
 }
@@ -38,8 +41,8 @@ if ($result && $result->num_rows > 0) {
 die("No name found");
 }
  
-$apiKey = "9d1d1725edeee17ee162f16196895b34-4f5239a4-35e5-4914-a264-d64fa4bd0e00";
-$apiURL = "k28491.api.infobip.com"; 
+$apiKey = "2ddeaf03c640130294e055db2dc0e44a-d05deca4-8ca9-4eeb-b062-945715f56ebd";
+$apiURL = "5yk2dx.api.infobip.com";
 
 $configuration = new Configuration(host: $apiURL, apiKey: $apiKey);
 $api = new SmsApi(config: $configuration);
